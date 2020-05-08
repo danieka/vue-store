@@ -8,9 +8,7 @@ export class ReactiveMap<K, T>{
     private _get(id: K) {
         if (!this.map.has(id)) {
             console.error(new this.constructor)
-            const newValue = new this.constructor
-            
-            ()
+            const newValue = new this.constructor()
             this.map.set(id, newValue)
             this.all.push(newValue)
         }
