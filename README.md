@@ -42,21 +42,10 @@ export const userStore = new UserStore();
 
 ### Component.vue
 ```
-<template>
-  <div class="hello">
-    {{ user.name }}
-  </div>
-</template>
-
-<script lang="ts">
 import Vue from "vue";
 import { userStore } from '../stores/UserStore'
 
 export default Vue.extend({
-  name: "HelloWorld",
-  props: {
-    msg: String
-  },
   setup: function() {
     const user = userStore.get(8)
     return {
