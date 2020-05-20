@@ -15,12 +15,16 @@ Download it and include it.
 export class User {
     name = ''
 
-    constructor() {
-        this.loadFromServer()
+    constructor(id: number) {
+        this.loadFromServer(id)
     }
 
-    loadFromServer() {
-        setTimeout(() => this.name = "John Doe", 2000)
+    loadFromServer(id: number) {
+        setTimeout(() => this.name = `John Doe ${id}`, 2000)
+    }
+
+    store() {
+        console.error("Stored the following value to the server", this.name)
     }
 }
 ```
@@ -38,10 +42,22 @@ class UserStore extends ReactiveMap<number, User> {
 }
 
 export const userStore = new UserStore();
+
 ```
 
 ### Component.vue
 ```
+<template>
+  <div>
+    <div>
+      {{ user.name }}
+    </div>
+    <input v-model="user.name" />
+    <button @click="user.store()">Store</button>
+  </div>
+</template>
+
+<script lang="ts">
 import Vue from "vue";
 import { userStore } from '../stores/UserStore'
 

@@ -1,6 +1,10 @@
 <template>
-  <div class="hello">
-    {{ user.name }}
+  <div>
+    <div>
+      {{ user.name }}
+    </div>
+    <input v-model="user.name" />
+    <button @click="user.store()">Store</button>
   </div>
 </template>
 
